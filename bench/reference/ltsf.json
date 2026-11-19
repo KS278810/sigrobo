@@ -1,0 +1,1137 @@
+{
+ "schema": "sigrobo.bench.reference/1",
+ "group": "ltsf",
+ "task": "B",
+ "lower_is_better": true,
+ "source": {
+  "title": "A Time Series is Worth 64 Words: Long-term Forecasting with Transformers",
+  "authors": "Nie, Nguyen, Sinthong, Kalagnanam",
+  "year": 2023,
+  "arxiv": "2211.14730",
+  "url": "https://arxiv.org/abs/2211.14730",
+  "condition": "multivariate, all channels averaged, MSE and MAE on data standardised with the training statistics, sliding windows with stride 1, Table 3 supervised results; lookback per model as in the paper",
+  "condition_ja": "多変量の全チャネルを平均した、学習区間の統計で標準化した値の MSE と MAE。窓の開始位置はすべて。表 3 の教師あり学習の結果。入力長はモデルごとに論文のとおり。"
+ },
+ "entries": {
+  "weather/96/mse": {
+   "dataset": "weather",
+   "horizon": 96,
+   "metric": "mse",
+   "unit": "standardised",
+   "rows": [
+    {
+     "model": "PatchTST/64",
+     "value": 0.149,
+     "lookback": 512,
+     "table": "Table 3"
+    },
+    {
+     "model": "PatchTST/42",
+     "value": 0.152,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "DLinear",
+     "value": 0.176,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "FEDformer",
+     "value": 0.238,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Autoformer",
+     "value": 0.249,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Informer",
+     "value": 0.354,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Pyraformer",
+     "value": 0.896,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "LogTrans",
+     "value": 0.458,
+     "lookback": 96,
+     "table": "Table 3"
+    }
+   ]
+  },
+  "weather/96/mae": {
+   "dataset": "weather",
+   "horizon": 96,
+   "metric": "mae",
+   "unit": "standardised",
+   "rows": [
+    {
+     "model": "PatchTST/64",
+     "value": 0.198,
+     "lookback": 512,
+     "table": "Table 3"
+    },
+    {
+     "model": "PatchTST/42",
+     "value": 0.199,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "DLinear",
+     "value": 0.237,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "FEDformer",
+     "value": 0.314,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Autoformer",
+     "value": 0.329,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Informer",
+     "value": 0.405,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Pyraformer",
+     "value": 0.556,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "LogTrans",
+     "value": 0.49,
+     "lookback": 96,
+     "table": "Table 3"
+    }
+   ]
+  },
+  "weather/720/mse": {
+   "dataset": "weather",
+   "horizon": 720,
+   "metric": "mse",
+   "unit": "standardised",
+   "rows": [
+    {
+     "model": "PatchTST/64",
+     "value": 0.314,
+     "lookback": 512,
+     "table": "Table 3"
+    },
+    {
+     "model": "PatchTST/42",
+     "value": 0.32,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "DLinear",
+     "value": 0.323,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "FEDformer",
+     "value": 0.389,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Autoformer",
+     "value": 0.415,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Informer",
+     "value": 0.916,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Pyraformer",
+     "value": 1.004,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "LogTrans",
+     "value": 0.869,
+     "lookback": 96,
+     "table": "Table 3"
+    }
+   ]
+  },
+  "weather/720/mae": {
+   "dataset": "weather",
+   "horizon": 720,
+   "metric": "mae",
+   "unit": "standardised",
+   "rows": [
+    {
+     "model": "PatchTST/64",
+     "value": 0.334,
+     "lookback": 512,
+     "table": "Table 3"
+    },
+    {
+     "model": "PatchTST/42",
+     "value": 0.335,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "DLinear",
+     "value": 0.362,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "FEDformer",
+     "value": 0.409,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Autoformer",
+     "value": 0.426,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Informer",
+     "value": 0.705,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Pyraformer",
+     "value": 0.934,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "LogTrans",
+     "value": 0.675,
+     "lookback": 96,
+     "table": "Table 3"
+    }
+   ]
+  },
+  "etth1/96/mse": {
+   "dataset": "etth1",
+   "horizon": 96,
+   "metric": "mse",
+   "unit": "standardised",
+   "rows": [
+    {
+     "model": "PatchTST/64",
+     "value": 0.37,
+     "lookback": 512,
+     "table": "Table 3"
+    },
+    {
+     "model": "PatchTST/42",
+     "value": 0.375,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "DLinear",
+     "value": 0.375,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "FEDformer",
+     "value": 0.376,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Autoformer",
+     "value": 0.435,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Informer",
+     "value": 0.941,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Pyraformer",
+     "value": 0.664,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "LogTrans",
+     "value": 0.878,
+     "lookback": 96,
+     "table": "Table 3"
+    }
+   ]
+  },
+  "etth1/96/mae": {
+   "dataset": "etth1",
+   "horizon": 96,
+   "metric": "mae",
+   "unit": "standardised",
+   "rows": [
+    {
+     "model": "PatchTST/64",
+     "value": 0.4,
+     "lookback": 512,
+     "table": "Table 3"
+    },
+    {
+     "model": "PatchTST/42",
+     "value": 0.399,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "DLinear",
+     "value": 0.399,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "FEDformer",
+     "value": 0.415,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Autoformer",
+     "value": 0.446,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Informer",
+     "value": 0.769,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Pyraformer",
+     "value": 0.612,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "LogTrans",
+     "value": 0.74,
+     "lookback": 96,
+     "table": "Table 3"
+    }
+   ]
+  },
+  "etth1/720/mse": {
+   "dataset": "etth1",
+   "horizon": 720,
+   "metric": "mse",
+   "unit": "standardised",
+   "rows": [
+    {
+     "model": "PatchTST/64",
+     "value": 0.447,
+     "lookback": 512,
+     "table": "Table 3"
+    },
+    {
+     "model": "PatchTST/42",
+     "value": 0.449,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "DLinear",
+     "value": 0.472,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "FEDformer",
+     "value": 0.469,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Autoformer",
+     "value": 0.515,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Informer",
+     "value": 1.144,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Pyraformer",
+     "value": 0.963,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "LogTrans",
+     "value": 1.135,
+     "lookback": 96,
+     "table": "Table 3"
+    }
+   ]
+  },
+  "etth1/720/mae": {
+   "dataset": "etth1",
+   "horizon": 720,
+   "metric": "mae",
+   "unit": "standardised",
+   "rows": [
+    {
+     "model": "PatchTST/64",
+     "value": 0.468,
+     "lookback": 512,
+     "table": "Table 3"
+    },
+    {
+     "model": "PatchTST/42",
+     "value": 0.466,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "DLinear",
+     "value": 0.49,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "FEDformer",
+     "value": 0.492,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Autoformer",
+     "value": 0.517,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Informer",
+     "value": 0.857,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Pyraformer",
+     "value": 0.782,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "LogTrans",
+     "value": 0.852,
+     "lookback": 96,
+     "table": "Table 3"
+    }
+   ]
+  },
+  "etth2/96/mse": {
+   "dataset": "etth2",
+   "horizon": 96,
+   "metric": "mse",
+   "unit": "standardised",
+   "rows": [
+    {
+     "model": "PatchTST/64",
+     "value": 0.274,
+     "lookback": 512,
+     "table": "Table 3"
+    },
+    {
+     "model": "PatchTST/42",
+     "value": 0.274,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "DLinear",
+     "value": 0.289,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "FEDformer",
+     "value": 0.332,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Autoformer",
+     "value": 0.332,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Informer",
+     "value": 1.549,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Pyraformer",
+     "value": 0.645,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "LogTrans",
+     "value": 2.116,
+     "lookback": 96,
+     "table": "Table 3"
+    }
+   ]
+  },
+  "etth2/96/mae": {
+   "dataset": "etth2",
+   "horizon": 96,
+   "metric": "mae",
+   "unit": "standardised",
+   "rows": [
+    {
+     "model": "PatchTST/64",
+     "value": 0.337,
+     "lookback": 512,
+     "table": "Table 3"
+    },
+    {
+     "model": "PatchTST/42",
+     "value": 0.336,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "DLinear",
+     "value": 0.353,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "FEDformer",
+     "value": 0.374,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Autoformer",
+     "value": 0.368,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Informer",
+     "value": 0.952,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Pyraformer",
+     "value": 0.597,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "LogTrans",
+     "value": 1.197,
+     "lookback": 96,
+     "table": "Table 3"
+    }
+   ]
+  },
+  "etth2/720/mse": {
+   "dataset": "etth2",
+   "horizon": 720,
+   "metric": "mse",
+   "unit": "standardised",
+   "rows": [
+    {
+     "model": "PatchTST/64",
+     "value": 0.379,
+     "lookback": 512,
+     "table": "Table 3"
+    },
+    {
+     "model": "PatchTST/42",
+     "value": 0.379,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "DLinear",
+     "value": 0.605,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "FEDformer",
+     "value": 0.412,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Autoformer",
+     "value": 0.453,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Informer",
+     "value": 3.656,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Pyraformer",
+     "value": 0.963,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "LogTrans",
+     "value": 3.188,
+     "lookback": 96,
+     "table": "Table 3"
+    }
+   ]
+  },
+  "etth2/720/mae": {
+   "dataset": "etth2",
+   "horizon": 720,
+   "metric": "mae",
+   "unit": "standardised",
+   "rows": [
+    {
+     "model": "PatchTST/64",
+     "value": 0.422,
+     "lookback": 512,
+     "table": "Table 3"
+    },
+    {
+     "model": "PatchTST/42",
+     "value": 0.422,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "DLinear",
+     "value": 0.551,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "FEDformer",
+     "value": 0.469,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Autoformer",
+     "value": 0.49,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Informer",
+     "value": 1.619,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Pyraformer",
+     "value": 0.783,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "LogTrans",
+     "value": 1.54,
+     "lookback": 96,
+     "table": "Table 3"
+    }
+   ]
+  },
+  "ettm1/96/mse": {
+   "dataset": "ettm1",
+   "horizon": 96,
+   "metric": "mse",
+   "unit": "standardised",
+   "rows": [
+    {
+     "model": "PatchTST/64",
+     "value": 0.293,
+     "lookback": 512,
+     "table": "Table 3"
+    },
+    {
+     "model": "PatchTST/42",
+     "value": 0.29,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "DLinear",
+     "value": 0.299,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "FEDformer",
+     "value": 0.326,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Autoformer",
+     "value": 0.51,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Informer",
+     "value": 0.626,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Pyraformer",
+     "value": 0.543,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "LogTrans",
+     "value": 0.6,
+     "lookback": 96,
+     "table": "Table 3"
+    }
+   ]
+  },
+  "ettm1/96/mae": {
+   "dataset": "ettm1",
+   "horizon": 96,
+   "metric": "mae",
+   "unit": "standardised",
+   "rows": [
+    {
+     "model": "PatchTST/64",
+     "value": 0.346,
+     "lookback": 512,
+     "table": "Table 3"
+    },
+    {
+     "model": "PatchTST/42",
+     "value": 0.342,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "DLinear",
+     "value": 0.343,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "FEDformer",
+     "value": 0.39,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Autoformer",
+     "value": 0.492,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Informer",
+     "value": 0.56,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Pyraformer",
+     "value": 0.51,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "LogTrans",
+     "value": 0.546,
+     "lookback": 96,
+     "table": "Table 3"
+    }
+   ]
+  },
+  "ettm1/720/mse": {
+   "dataset": "ettm1",
+   "horizon": 720,
+   "metric": "mse",
+   "unit": "standardised",
+   "rows": [
+    {
+     "model": "PatchTST/64",
+     "value": 0.416,
+     "lookback": 512,
+     "table": "Table 3"
+    },
+    {
+     "model": "PatchTST/42",
+     "value": 0.42,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "DLinear",
+     "value": 0.425,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "FEDformer",
+     "value": 0.446,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Autoformer",
+     "value": 0.527,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Informer",
+     "value": 1.133,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Pyraformer",
+     "value": 0.908,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "LogTrans",
+     "value": 1.153,
+     "lookback": 96,
+     "table": "Table 3"
+    }
+   ]
+  },
+  "ettm1/720/mae": {
+   "dataset": "ettm1",
+   "horizon": 720,
+   "metric": "mae",
+   "unit": "standardised",
+   "rows": [
+    {
+     "model": "PatchTST/64",
+     "value": 0.42,
+     "lookback": 512,
+     "table": "Table 3"
+    },
+    {
+     "model": "PatchTST/42",
+     "value": 0.424,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "DLinear",
+     "value": 0.421,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "FEDformer",
+     "value": 0.458,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Autoformer",
+     "value": 0.493,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Informer",
+     "value": 0.845,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Pyraformer",
+     "value": 0.724,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "LogTrans",
+     "value": 0.82,
+     "lookback": 96,
+     "table": "Table 3"
+    }
+   ]
+  },
+  "ettm2/96/mse": {
+   "dataset": "ettm2",
+   "horizon": 96,
+   "metric": "mse",
+   "unit": "standardised",
+   "rows": [
+    {
+     "model": "PatchTST/64",
+     "value": 0.166,
+     "lookback": 512,
+     "table": "Table 3"
+    },
+    {
+     "model": "PatchTST/42",
+     "value": 0.165,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "DLinear",
+     "value": 0.167,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "FEDformer",
+     "value": 0.18,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Autoformer",
+     "value": 0.205,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Informer",
+     "value": 0.355,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Pyraformer",
+     "value": 0.435,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "LogTrans",
+     "value": 0.768,
+     "lookback": 96,
+     "table": "Table 3"
+    }
+   ]
+  },
+  "ettm2/96/mae": {
+   "dataset": "ettm2",
+   "horizon": 96,
+   "metric": "mae",
+   "unit": "standardised",
+   "rows": [
+    {
+     "model": "PatchTST/64",
+     "value": 0.256,
+     "lookback": 512,
+     "table": "Table 3"
+    },
+    {
+     "model": "PatchTST/42",
+     "value": 0.255,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "DLinear",
+     "value": 0.26,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "FEDformer",
+     "value": 0.271,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Autoformer",
+     "value": 0.293,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Informer",
+     "value": 0.462,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Pyraformer",
+     "value": 0.507,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "LogTrans",
+     "value": 0.642,
+     "lookback": 96,
+     "table": "Table 3"
+    }
+   ]
+  },
+  "ettm2/720/mse": {
+   "dataset": "ettm2",
+   "horizon": 720,
+   "metric": "mse",
+   "unit": "standardised",
+   "rows": [
+    {
+     "model": "PatchTST/64",
+     "value": 0.362,
+     "lookback": 512,
+     "table": "Table 3"
+    },
+    {
+     "model": "PatchTST/42",
+     "value": 0.367,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "DLinear",
+     "value": 0.397,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "FEDformer",
+     "value": 0.41,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Autoformer",
+     "value": 0.414,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Informer",
+     "value": 3.001,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Pyraformer",
+     "value": 3.625,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "LogTrans",
+     "value": 3.048,
+     "lookback": 96,
+     "table": "Table 3"
+    }
+   ]
+  },
+  "ettm2/720/mae": {
+   "dataset": "ettm2",
+   "horizon": 720,
+   "metric": "mae",
+   "unit": "standardised",
+   "rows": [
+    {
+     "model": "PatchTST/64",
+     "value": 0.385,
+     "lookback": 512,
+     "table": "Table 3"
+    },
+    {
+     "model": "PatchTST/42",
+     "value": 0.385,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "DLinear",
+     "value": 0.421,
+     "lookback": 336,
+     "table": "Table 3"
+    },
+    {
+     "model": "FEDformer",
+     "value": 0.42,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Autoformer",
+     "value": 0.419,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Informer",
+     "value": 1.267,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "Pyraformer",
+     "value": 1.451,
+     "lookback": 96,
+     "table": "Table 3"
+    },
+    {
+     "model": "LogTrans",
+     "value": 1.328,
+     "lookback": 96,
+     "table": "Table 3"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "name": "SigRobo",
+ "package": "sigrobo",
+ "wheels": [
+  "numpy",
+  "scipy",
+  "pandas",
+  "scikit-learn",
+  "statsmodels",
+  "lightgbm",
+  "pyyaml",
+  "joblib"
+ ],
+ "load_status": "numpy と pandas と statsmodels と lightgbm を読み込んでいます",
+ "bench": true,
+ "terminal": [
+  "done",
+  "failed",
+  "cancelled",
+  "blocked"
+ ],
+ "routes": [
+  {
+   "path": [
+    "bench"
+   ],
+   "fn": "bench",
+   "args": []
+  }
+ ]
+}

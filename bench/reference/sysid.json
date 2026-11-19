@@ -1,0 +1,687 @@
+{
+ "schema": "sigrobo.bench.reference/1",
+ "group": "sysid",
+ "task": "A",
+ "metric": "rmse",
+ "lower_is_better": true,
+ "source": {
+  "title": "Baseline Results for Selected Nonlinear System Identification Benchmarks",
+  "authors": "Champneys, Beintema, Toth, Schoukens, Rogers",
+  "year": 2024,
+  "arxiv": "2405.10779v2",
+  "url": "https://arxiv.org/abs/2405.10779",
+  "condition": "simulation RMSE on the official test sets, input only after the state initialisation window; Table 3 baselines, Table 4 selected state of the art. GP NARX trained on at most the first 1000 training points",
+  "condition_ja": "公式の試験セットでの、入力だけからのシミュレーション RMSE。表 3 が基準のモデル、表 4 が選ばれた最先端。GP NARX は学習データの先頭 1000 点までで学習。"
+ },
+ "entries": {
+  "silverbox/multisine": {
+   "benchmark": "silverbox",
+   "test_set": "multisine",
+   "unit": "mV",
+   "rows": [
+    {
+     "model": "LTI SS",
+     "value": 6.96,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "LTI ARX",
+     "value": 6.95,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "pNARX",
+     "value": 0.64,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "GP NARX",
+     "value": 0.301,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "MLP NARX",
+     "value": 2.8,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "MLP FIR",
+     "value": 18.9,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "RNN",
+     "value": 1.64,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "GRU",
+     "value": 1.49,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "LSTM",
+     "value": 1.5,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "OLSTM",
+     "value": 1.51,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "DT subnet",
+     "value": 0.36,
+     "kind": "state_of_the_art",
+     "table": "Table 4",
+     "cite": "Beintema et al., 2021"
+    }
+   ]
+  },
+  "silverbox/arrow_full": {
+   "benchmark": "silverbox",
+   "test_set": "arrow_full",
+   "unit": "mV",
+   "rows": [
+    {
+     "model": "LTI SS",
+     "value": 14.4,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "LTI ARX",
+     "value": 14.2,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "pNARX",
+     "value": 2.25,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "GP NARX",
+     "value": 0.6,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "MLP NARX",
+     "value": 5.18,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "MLP FIR",
+     "value": 20.2,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "RNN",
+     "value": 4.88,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "GRU",
+     "value": 2.8,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "LSTM",
+     "value": 2.68,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "OLSTM",
+     "value": 2.38,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "DT subnet",
+     "value": 1.4,
+     "kind": "state_of_the_art",
+     "table": "Table 4",
+     "cite": "Beintema et al., 2021"
+    },
+    {
+     "model": "PNLSS",
+     "value": 0.26,
+     "kind": "state_of_the_art",
+     "table": "Table 4",
+     "cite": "Paduart et al., 2010; Paduart et al., 2012; Relan et al., 2017"
+    }
+   ]
+  },
+  "silverbox/arrow_no_extrapolation": {
+   "benchmark": "silverbox",
+   "test_set": "arrow_no_extrapolation",
+   "unit": "mV",
+   "rows": [
+    {
+     "model": "LTI SS",
+     "value": 6.58,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "LTI ARX",
+     "value": 6.59,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "pNARX",
+     "value": 0.571,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "GP NARX",
+     "value": 0.259,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "MLP NARX",
+     "value": 2.4,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "MLP FIR",
+     "value": 15.3,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "RNN",
+     "value": 1.73,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "GRU",
+     "value": 0.947,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "LSTM",
+     "value": 0.96,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "OLSTM",
+     "value": 1.08,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "DT subnet",
+     "value": 0.32,
+     "kind": "state_of_the_art",
+     "table": "Table 4",
+     "cite": "Beintema et al., 2021"
+    }
+   ]
+  },
+  "wiener_hammerstein/test": {
+   "benchmark": "wiener_hammerstein",
+   "test_set": "test",
+   "unit": "mV",
+   "rows": [
+    {
+     "model": "LTI SS",
+     "value": 43.4,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "LTI ARX",
+     "value": 43.4,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "pNARX",
+     "value": 27.3,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "GP NARX",
+     "value": 23.1,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "MLP NARX",
+     "value": 310,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "MLP FIR",
+     "value": 24.8,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "RNN",
+     "value": 6.87,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "GRU",
+     "value": 3.97,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "LSTM",
+     "value": 4.45,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "OLSTM",
+     "value": 4.55,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "DT subnet",
+     "value": 0.241,
+     "kind": "state_of_the_art",
+     "table": "Table 4",
+     "cite": "Beintema et al., 2021"
+    },
+    {
+     "model": "PNLSS",
+     "value": 0.42,
+     "kind": "state_of_the_art",
+     "table": "Table 4",
+     "cite": "Paduart et al., 2010; Paduart et al., 2012; Relan et al., 2017"
+    },
+    {
+     "model": "dynoNet",
+     "value": 0.452,
+     "kind": "state_of_the_art",
+     "table": "Table 4",
+     "cite": "Forgione and Piga, 2021b"
+    }
+   ]
+  },
+  "emps/test": {
+   "benchmark": "emps",
+   "test_set": "test",
+   "unit": "mm",
+   "rows": [
+    {
+     "model": "LTI SS",
+     "value": 5.53,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "LTI ARX",
+     "value": 12.6,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "pNARX",
+     "value": 5.17,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "GP NARX",
+     "value": 1690,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "MLP NARX",
+     "value": 133,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "MLP FIR",
+     "value": 121,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "RNN",
+     "value": 89.2,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "GRU",
+     "value": 220,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "LSTM",
+     "value": 74.1,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "OLSTM",
+     "value": 111,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "CT subnet",
+     "value": 4.61,
+     "kind": "state_of_the_art",
+     "table": "Table 4",
+     "cite": "Beintema et al., 2023"
+    },
+    {
+     "model": "dynoNet",
+     "value": 2.64,
+     "kind": "state_of_the_art",
+     "table": "Table 4",
+     "cite": "Forgione and Piga, 2021b"
+    }
+   ]
+  },
+  "cascaded_tanks/test": {
+   "benchmark": "cascaded_tanks",
+   "test_set": "test",
+   "unit": "V",
+   "rows": [
+    {
+     "model": "LTI SS",
+     "value": 0.588,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "LTI ARX",
+     "value": 0.685,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "pNARX",
+     "value": 0.413,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "GP NARX",
+     "value": 0.622,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "MLP NARX",
+     "value": 2.04,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "MLP FIR",
+     "value": 1.43,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "RNN",
+     "value": 0.543,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "GRU",
+     "value": 0.396,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "LSTM",
+     "value": 0.49,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "OLSTM",
+     "value": 0.471,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "DT subnet",
+     "value": 0.37,
+     "kind": "state_of_the_art",
+     "table": "Table 4",
+     "cite": "Beintema et al., 2021"
+    },
+    {
+     "model": "CT subnet",
+     "value": 0.306,
+     "kind": "state_of_the_art",
+     "table": "Table 4",
+     "cite": "Beintema et al., 2023"
+    },
+    {
+     "model": "Grey-box",
+     "value": 0.191,
+     "kind": "state_of_the_art",
+     "table": "Table 4",
+     "cite": "Worden et al., 2018"
+    },
+    {
+     "model": "PNLSS",
+     "value": 0.45,
+     "kind": "state_of_the_art",
+     "table": "Table 4",
+     "cite": "Paduart et al., 2010; Paduart et al., 2012; Relan et al., 2017"
+    },
+    {
+     "model": "TSEM",
+     "value": 0.33,
+     "kind": "state_of_the_art",
+     "table": "Table 4",
+     "cite": "Forgione and Piga, 2021a"
+    },
+    {
+     "model": "SCI",
+     "value": 0.4,
+     "kind": "state_of_the_art",
+     "table": "Table 4",
+     "cite": "Forgione and Piga, 2021a"
+    }
+   ]
+  },
+  "ced/test1": {
+   "benchmark": "ced",
+   "test_set": "test1",
+   "unit": "ticks/s",
+   "rows": [
+    {
+     "model": "LTI SS",
+     "value": 0.224,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "LTI ARX",
+     "value": 0.291,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "pNARX",
+     "value": 0.1,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "GP NARX",
+     "value": 0.102,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "MLP NARX",
+     "value": 0.142,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "MLP FIR",
+     "value": 0.122,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "RNN",
+     "value": 0.096,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "GRU",
+     "value": 0.286,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "LSTM",
+     "value": 0.303,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "OLSTM",
+     "value": 0.151,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "DT subnet",
+     "value": 0.169,
+     "kind": "state_of_the_art",
+     "table": "Table 4",
+     "cite": "Beintema et al., 2021"
+    },
+    {
+     "model": "CT subnet",
+     "value": 0.115,
+     "kind": "state_of_the_art",
+     "table": "Table 4",
+     "cite": "Beintema et al., 2023"
+    }
+   ]
+  },
+  "ced/test2": {
+   "benchmark": "ced",
+   "test_set": "test2",
+   "unit": "ticks/s",
+   "rows": [
+    {
+     "model": "LTI SS",
+     "value": 0.384,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "LTI ARX",
+     "value": 0.331,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "pNARX",
+     "value": 0.141,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "GP NARX",
+     "value": 0.09,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "MLP NARX",
+     "value": 0.101,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "MLP FIR",
+     "value": 0.095,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "RNN",
+     "value": 0.235,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "GRU",
+     "value": 0.238,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "LSTM",
+     "value": 0.145,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "OLSTM",
+     "value": 0.259,
+     "kind": "baseline",
+     "table": "Table 3"
+    },
+    {
+     "model": "DT subnet",
+     "value": 0.117,
+     "kind": "state_of_the_art",
+     "table": "Table 4",
+     "cite": "Beintema et al., 2021"
+    },
+    {
+     "model": "CT subnet",
+     "value": 0.074,
+     "kind": "state_of_the_art",
+     "table": "Table 4",
+     "cite": "Beintema et al., 2023"
+    }
+   ]
+  }
+ }
+}

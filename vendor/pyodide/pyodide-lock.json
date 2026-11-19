@@ -1,0 +1,231 @@
+{
+ "info": {
+  "abi_version": "2025_0",
+  "arch": "wasm32",
+  "platform": "emscripten_4_0_9",
+  "python": "3.13.2",
+  "version": "0.28.0.dev0"
+ },
+ "packages": {
+  "numpy": {
+   "depends": [],
+   "file_name": "numpy-2.2.5-cp313-cp313-pyodide_2025_0_wasm32.whl",
+   "imports": [
+    "numpy"
+   ],
+   "install_dir": "site",
+   "name": "numpy",
+   "package_type": "package",
+   "sha256": "467a88e8c79f9e10c8e7052bcc32dd12d44d51098beb3b8f970e1cfc965c6757",
+   "unvendored_tests": false,
+   "version": "2.2.5"
+  },
+  "scipy": {
+   "depends": [
+    "numpy",
+    "openblas"
+   ],
+   "file_name": "scipy-1.14.1-cp313-cp313-pyodide_2025_0_wasm32.whl",
+   "imports": [
+    "scipy"
+   ],
+   "install_dir": "site",
+   "name": "scipy",
+   "package_type": "package",
+   "sha256": "4e1b9bf1d135ab3f81e65653988cdfe6fb05a703938b35d1397ab7b327dc2251",
+   "unvendored_tests": true,
+   "version": "1.14.1"
+  },
+  "openblas": {
+   "depends": [],
+   "file_name": "openblas-0.3.26.zip",
+   "imports": [],
+   "install_dir": "dynlib",
+   "name": "openblas",
+   "package_type": "shared_library",
+   "sha256": "c0beb80dfe34e9c55f4da8a90bf7479278cc7833c20c4498dd0475a08457369e",
+   "unvendored_tests": false,
+   "version": "0.3.26"
+  },
+  "pandas": {
+   "depends": [
+    "numpy",
+    "python-dateutil",
+    "pytz"
+   ],
+   "file_name": "pandas-2.3.0-cp313-cp313-pyodide_2025_0_wasm32.whl",
+   "imports": [
+    "pandas"
+   ],
+   "install_dir": "site",
+   "name": "pandas",
+   "package_type": "package",
+   "sha256": "921a819fd1d60b69e46c74b09827d8c2405ade44ea278ba94c02d4d1b854c938",
+   "unvendored_tests": true,
+   "version": "2.3.0"
+  },
+  "python-dateutil": {
+   "depends": [
+    "six"
+   ],
+   "file_name": "python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+   "imports": [
+    "dateutil"
+   ],
+   "install_dir": "site",
+   "name": "python-dateutil",
+   "package_type": "package",
+   "sha256": "9792745fdfff19fe681a2d2ccd1b72de71650d4b09151567ff85fb266ca86291",
+   "unvendored_tests": false,
+   "version": "2.9.0.post0"
+  },
+  "six": {
+   "depends": [],
+   "file_name": "six-1.17.0-py2.py3-none-any.whl",
+   "imports": [
+    "six"
+   ],
+   "install_dir": "site",
+   "name": "six",
+   "package_type": "package",
+   "sha256": "f213e36bbaae4640f256c86a6626e9122ce2b02b8b02e88a82053d0e4c50c02a",
+   "unvendored_tests": false,
+   "version": "1.17.0"
+  },
+  "pytz": {
+   "depends": [],
+   "file_name": "pytz-2025.2-py2.py3-none-any.whl",
+   "imports": [
+    "pytz"
+   ],
+   "install_dir": "site",
+   "name": "pytz",
+   "package_type": "package",
+   "sha256": "4a449e011aa4eacfa58b6c06cd4db6581cf86f62d4caa320b8c30e54f4a1accb",
+   "unvendored_tests": false,
+   "version": "2025.2"
+  },
+  "scikit-learn": {
+   "depends": [
+    "scipy",
+    "joblib",
+    "threadpoolctl"
+   ],
+   "file_name": "scikit_learn-1.7.0-cp313-cp313-pyodide_2025_0_wasm32.whl",
+   "imports": [
+    "sklearn"
+   ],
+   "install_dir": "site",
+   "name": "scikit-learn",
+   "package_type": "package",
+   "sha256": "71a6ad732e0d7e52aa4b81cc4ef4f26a1c45917f38a6ca296d5b33737dd56b2e",
+   "unvendored_tests": true,
+   "version": "1.7.0"
+  },
+  "joblib": {
+   "depends": [],
+   "file_name": "joblib-1.4.2-py3-none-any.whl",
+   "imports": [
+    "joblib"
+   ],
+   "install_dir": "site",
+   "name": "joblib",
+   "package_type": "package",
+   "sha256": "0442695c4d63401b25202dd7db4fb3027085612364ee5ce077a39f3329ca75a9",
+   "unvendored_tests": true,
+   "version": "1.4.2"
+  },
+  "threadpoolctl": {
+   "depends": [],
+   "file_name": "threadpoolctl-3.5.0-py3-none-any.whl",
+   "imports": [
+    "threadpoolctl"
+   ],
+   "install_dir": "site",
+   "name": "threadpoolctl",
+   "package_type": "package",
+   "sha256": "4c7afd9a403c3ac4db535d6aca2090cfde391c0883b15080cbc3c573e4fcae9b",
+   "unvendored_tests": false,
+   "version": "3.5.0"
+  },
+  "statsmodels": {
+   "depends": [
+    "numpy",
+    "scipy",
+    "pandas",
+    "patsy",
+    "packaging"
+   ],
+   "file_name": "statsmodels-0.14.4-cp313-cp313-pyodide_2025_0_wasm32.whl",
+   "imports": [
+    "statsmodels"
+   ],
+   "install_dir": "site",
+   "name": "statsmodels",
+   "package_type": "package",
+   "sha256": "6a5762920de3429abb587771320355cd4b8c5023b04f7f0c4cd9ea6bbcdbc0ba",
+   "unvendored_tests": false,
+   "version": "0.14.4"
+  },
+  "patsy": {
+   "depends": [
+    "numpy",
+    "six"
+   ],
+   "file_name": "patsy-1.0.1-py2.py3-none-any.whl",
+   "imports": [
+    "patsy"
+   ],
+   "install_dir": "site",
+   "name": "patsy",
+   "package_type": "package",
+   "sha256": "4ec184afa0b153f0f4cabf4a1603077df73c7a5c7392a0bd251f8a40171673a3",
+   "unvendored_tests": true,
+   "version": "1.0.1"
+  },
+  "packaging": {
+   "depends": [],
+   "file_name": "packaging-24.2-py3-none-any.whl",
+   "imports": [
+    "packaging"
+   ],
+   "install_dir": "site",
+   "name": "packaging",
+   "package_type": "package",
+   "sha256": "c0d9d97a17f70142e435a5c0ccbdb57f209823e325b0ce4893ceca8c36afe2b2",
+   "unvendored_tests": false,
+   "version": "24.2"
+  },
+  "lightgbm": {
+   "depends": [
+    "numpy",
+    "scipy",
+    "scikit-learn"
+   ],
+   "file_name": "lightgbm-4.6.0-py3-none-pyodide_2025_0_wasm32.whl",
+   "imports": [
+    "lightgbm"
+   ],
+   "install_dir": "site",
+   "name": "lightgbm",
+   "package_type": "package",
+   "sha256": "3d5f16949ccd99eb6fa9fa91fde7a4297b19a720bb0d6cd413656ab24730ff8e",
+   "unvendored_tests": false,
+   "version": "4.6.0"
+  },
+  "pyyaml": {
+   "depends": [],
+   "file_name": "pyyaml-6.0.2-cp313-cp313-pyodide_2025_0_wasm32.whl",
+   "imports": [
+    "_yaml",
+    "yaml"
+   ],
+   "install_dir": "site",
+   "name": "pyyaml",
+   "package_type": "package",
+   "sha256": "197966da9f20f23b9ea37b7fee8019a39585ba78e75ac28ca0d9f7a85e098369",
+   "unvendored_tests": false,
+   "version": "6.0.2"
+  }
+ }
+}

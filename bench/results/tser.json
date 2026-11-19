@@ -1,0 +1,2013 @@
+{
+ "schema": "sigrobo.bench/1",
+ "group": "tser",
+ "task": "C",
+ "sigrobo_version": "0.0.1",
+ "git_commit": "f9c903107b13465c400dd1980c1074b07bb15da0",
+ "git_dirty": true,
+ "torch_version": "2.11.0+cu128",
+ "device": null,
+ "created_utc": "2026-10-18T15:14:24Z",
+ "protocol": {
+  "split": "official train and test of the archive",
+  "seeds": [
+   1
+  ],
+  "rocket_max_values": 20000000.0,
+  "rocket_max_series": 50000,
+  "minirocket_max_series": 100000,
+  "drcif_max_values": 1000000.0
+ },
+ "caveats": [
+  {
+   "code": "tuned_by_authors",
+   "ja": "公開値は、アーカイブの作者が設定した 13 の手法の 5 回の平均。ここのモデルは出荷時の設定で、乱数は 1 つだけで走らせた。",
+   "en": "Published values are the mean of 5 runs of 13 methods configured by the authors of the archive. The models here run with the shipped settings and a single random start."
+  },
+  {
+   "code": "archive_version",
+   "ja": "aeon が配る版は、論文の表 1 より数件少ないデータセットがあり、試験データは完全には同じでない。",
+   "en": "The aeon copy of the archive has a few instances fewer than Table 1 of the paper for some datasets, so the test sets are not identical."
+  },
+  {
+   "code": "rounding",
+   "ja": "公開値は小数 2 桁に丸めて印刷されているので、自分の値も 2 桁に丸めてから並べた。",
+   "en": "Published values are printed with 2 decimals, so the value of this tool is rounded to 2 decimals before it is placed among them."
+  },
+  {
+   "code": "missing",
+   "ja": "欠損のあるデータは、系列内で前方補完してから走らせた。補完しても残る欠損を受け付けないモデルは走らせていない。",
+   "en": "Missing values are filled forward inside each series before the run. A model that cannot take the missing values that remain is not run."
+  },
+  {
+   "code": "slow",
+   "ja": "rocket は値が 2000 万個以下かつ系列が 5 万本以下、drcif は値が 100 万個以下のデータだけで走らせた。遅いことと、rocket の特徴量が系列数に比例してメモリを使うため。",
+   "en": "rocket is run only where the data has at most 20 million values and at most 50 thousand series, and drcif at most 1 million values, because they are slow and the features of rocket take memory in proportion to the number of series."
+  },
+  {
+   "code": "australia",
+   "ja": "AustraliaRainfall は、系列が 16 万本ある。rocket と drcif は上限で除き、minirocket は系列が 10 万本を超えるので除いた。dummy と summary_lightgbm は走らせた。",
+   "en": "AustraliaRainfall has 160 thousand series. rocket and drcif are excluded by their limits, and minirocket because it has more than 100 thousand series. dummy and summary_lightgbm are run."
+  },
+  {
+   "code": "ppgdalia",
+   "ja": "PPGDalia は、チャネルごとに系列の長さが違うので除いた。",
+   "en": "PPGDalia is left out because its series have different lengths in different channels."
+  }
+ ],
+ "skipped": [
+  {
+   "benchmark": "HouseholdPowerConsumption1",
+   "model": "minirocket",
+   "code": "nan_unsupported"
+  },
+  {
+   "benchmark": "HouseholdPowerConsumption1",
+   "model": "rocket",
+   "code": "nan_unsupported"
+  },
+  {
+   "benchmark": "HouseholdPowerConsumption1",
+   "model": "drcif",
+   "code": "too_slow",
+   "values": 10303200
+  },
+  {
+   "benchmark": "HouseholdPowerConsumption2",
+   "model": "minirocket",
+   "code": "nan_unsupported"
+  },
+  {
+   "benchmark": "HouseholdPowerConsumption2",
+   "model": "rocket",
+   "code": "nan_unsupported"
+  },
+  {
+   "benchmark": "HouseholdPowerConsumption2",
+   "model": "drcif",
+   "code": "too_slow",
+   "values": 10303200
+  },
+  {
+   "benchmark": "BenzeneConcentration",
+   "model": "minirocket",
+   "code": "nan_unsupported"
+  },
+  {
+   "benchmark": "BenzeneConcentration",
+   "model": "rocket",
+   "code": "nan_unsupported"
+  },
+  {
+   "benchmark": "BenzeneConcentration",
+   "model": "drcif",
+   "code": "too_slow",
+   "values": 16343040
+  },
+  {
+   "benchmark": "BeijingPM10Quality",
+   "model": "minirocket",
+   "code": "nan_unsupported"
+  },
+  {
+   "benchmark": "BeijingPM10Quality",
+   "model": "rocket",
+   "code": "nan_unsupported"
+  },
+  {
+   "benchmark": "BeijingPM10Quality",
+   "model": "drcif",
+   "code": "too_slow",
+   "values": 3664656
+  },
+  {
+   "benchmark": "BeijingPM25Quality",
+   "model": "minirocket",
+   "code": "nan_unsupported"
+  },
+  {
+   "benchmark": "BeijingPM25Quality",
+   "model": "rocket",
+   "code": "nan_unsupported"
+  },
+  {
+   "benchmark": "BeijingPM25Quality",
+   "model": "drcif",
+   "code": "too_slow",
+   "values": 3664656
+  },
+  {
+   "benchmark": "LiveFuelMoistureContent",
+   "model": "drcif",
+   "code": "too_slow",
+   "values": 12782665
+  },
+  {
+   "benchmark": "FloodModeling2",
+   "model": "all",
+   "code": "load_failed"
+  },
+  {
+   "benchmark": "IEEEPPG",
+   "model": "drcif",
+   "code": "too_slow",
+   "values": 15480000
+  },
+  {
+   "benchmark": "BIDMC32HR",
+   "model": "rocket",
+   "code": "too_slow",
+   "values": 63592000
+  },
+  {
+   "benchmark": "BIDMC32HR",
+   "model": "drcif",
+   "code": "too_slow",
+   "values": 63592000
+  },
+  {
+   "benchmark": "BIDMC32RR",
+   "model": "rocket",
+   "code": "too_slow",
+   "values": 62960000
+  },
+  {
+   "benchmark": "BIDMC32RR",
+   "model": "drcif",
+   "code": "too_slow",
+   "values": 62960000
+  },
+  {
+   "benchmark": "BIDMC32SpO2",
+   "model": "rocket",
+   "code": "too_slow",
+   "values": 63592000
+  },
+  {
+   "benchmark": "BIDMC32SpO2",
+   "model": "drcif",
+   "code": "too_slow",
+   "values": 63592000
+  },
+  {
+   "benchmark": "NewsHeadlineSentiment",
+   "model": "rocket",
+   "code": "too_slow",
+   "values": 35926848
+  },
+  {
+   "benchmark": "NewsHeadlineSentiment",
+   "model": "drcif",
+   "code": "too_slow",
+   "values": 35926848
+  },
+  {
+   "benchmark": "NewsTitleSentiment",
+   "model": "rocket",
+   "code": "too_slow",
+   "values": 35926848
+  },
+  {
+   "benchmark": "NewsTitleSentiment",
+   "model": "drcif",
+   "code": "too_slow",
+   "values": 35926848
+  },
+  {
+   "benchmark": "AustraliaRainfall",
+   "model": "minirocket",
+   "code": "too_slow",
+   "values": 11539224,
+   "series": 160267
+  },
+  {
+   "benchmark": "AustraliaRainfall",
+   "model": "rocket",
+   "code": "too_slow",
+   "values": 11539224,
+   "series": 160267
+  },
+  {
+   "benchmark": "AustraliaRainfall",
+   "model": "drcif",
+   "code": "too_slow",
+   "values": 11539224,
+   "series": 160267
+  }
+ ],
+ "anchors": [
+  {
+   "name": "tser_rocket",
+   "benchmark": "AppliancesEnergy",
+   "model": "rocket",
+   "published_model": "Rocket",
+   "ours": 2.320518909656573,
+   "published": 2.3,
+   "ratio": 1.0089212650680752,
+   "tolerance": 1.15,
+   "passed": true
+  }
+ ],
+ "results": [
+  {
+   "benchmark": "AppliancesEnergy",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "minirocket",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 1.9255158738730505,
+   "values": [
+    1.9255158738730505
+   ],
+   "n_runs": 1,
+   "elapsed_s": 21.174079656600952,
+   "position": {
+    "rank": 1,
+    "n_published": 13,
+    "published_best": 2.3,
+    "published_median": 4.02,
+    "published_worst": 6.04,
+    "ratio_to_best": 0.8371808147274133,
+    "ratio_to_median": 0.47898404822712703,
+    "label": "best_or_better"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 95,
+    "n_test": 42
+   }
+  },
+  {
+   "benchmark": "AppliancesEnergy",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "summary_lightgbm",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 2.1593103191093013,
+   "values": [
+    2.1593103191093013
+   ],
+   "n_runs": 1,
+   "elapsed_s": 2.924347400665283,
+   "position": {
+    "rank": 1,
+    "n_published": 13,
+    "published_best": 2.3,
+    "published_median": 4.02,
+    "published_worst": 6.04,
+    "ratio_to_best": 0.9388305735257833,
+    "ratio_to_median": 0.5371418704251993,
+    "label": "best_or_better"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 95,
+    "n_test": 42
+   }
+  },
+  {
+   "benchmark": "AppliancesEnergy",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "rocket",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 2.320518909656573,
+   "values": [
+    2.320518909656573
+   ],
+   "n_runs": 1,
+   "elapsed_s": 25.39360761642456,
+   "position": {
+    "rank": 2,
+    "n_published": 13,
+    "published_best": 2.3,
+    "published_median": 4.02,
+    "published_worst": 6.04,
+    "ratio_to_best": 1.0089212650680752,
+    "ratio_to_median": 0.5772435098648192,
+    "label": "near_best"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 95,
+    "n_test": 42
+   }
+  },
+  {
+   "benchmark": "AppliancesEnergy",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "drcif",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 2.418479815486717,
+   "values": [
+    2.418479815486717
+   ],
+   "n_runs": 1,
+   "elapsed_s": 458.96596670150757,
+   "position": {
+    "rank": 2,
+    "n_published": 13,
+    "published_best": 2.3,
+    "published_median": 4.02,
+    "published_worst": 6.04,
+    "ratio_to_best": 1.0515129632550944,
+    "ratio_to_median": 0.6016118943996809,
+    "label": "near_best"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 95,
+    "n_test": 42
+   }
+  },
+  {
+   "benchmark": "AppliancesEnergy",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "dummy",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 3.4548994192066127,
+   "values": [
+    3.4548994192066127
+   ],
+   "n_runs": 1,
+   "elapsed_s": 0.023007869720458984,
+   "position": {
+    "rank": 4,
+    "n_published": 13,
+    "published_best": 2.3,
+    "published_median": 4.02,
+    "published_worst": 6.04,
+    "ratio_to_best": 1.5021301822637447,
+    "ratio_to_median": 0.8594277162205505,
+    "label": "upper_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 95,
+    "n_test": 42
+   }
+  },
+  {
+   "benchmark": "AustraliaRainfall",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "dummy",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 8.663144395730857,
+   "values": [
+    8.663144395730857
+   ],
+   "n_runs": 1,
+   "elapsed_s": 0.1021277904510498,
+   "position": {
+    "rank": 9,
+    "n_published": 13,
+    "published_best": 8.12,
+    "published_median": 8.49,
+    "published_worst": 30.25,
+    "ratio_to_best": 1.0668897039077412,
+    "ratio_to_median": 1.0203939217586404,
+    "label": "near_best"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 112186,
+    "n_test": 48081
+   }
+  },
+  {
+   "benchmark": "AustraliaRainfall",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "summary_lightgbm",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 9.913972728480827,
+   "values": [
+    9.913972728480827
+   ],
+   "n_runs": 1,
+   "elapsed_s": 64.72061443328857,
+   "position": {
+    "rank": 10,
+    "n_published": 13,
+    "published_best": 8.12,
+    "published_median": 8.49,
+    "published_worst": 30.25,
+    "ratio_to_best": 1.2209326020296587,
+    "ratio_to_median": 1.1677235251449738,
+    "label": "lower_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 112186,
+    "n_test": 48081
+   }
+  },
+  {
+   "benchmark": "BIDMC32HR",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "minirocket",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 10.696959165808217,
+   "values": [
+    10.696959165808217
+   ],
+   "n_runs": 1,
+   "elapsed_s": 440.68669152259827,
+   "position": {
+    "rank": 2,
+    "n_published": 13,
+    "published_best": 9.43,
+    "published_median": 13.98,
+    "published_worst": 15.29,
+    "ratio_to_best": 1.1343541002977962,
+    "ratio_to_median": 0.7651615998432201,
+    "label": "upper_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 5550,
+    "n_test": 2399
+   }
+  },
+  {
+   "benchmark": "BIDMC32HR",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "dummy",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 14.110199908267607,
+   "values": [
+    14.110199908267607
+   ],
+   "n_runs": 1,
+   "elapsed_s": 0.545119047164917,
+   "position": {
+    "rank": 9,
+    "n_published": 13,
+    "published_best": 9.43,
+    "published_median": 13.98,
+    "published_worst": 15.29,
+    "ratio_to_best": 1.496309640325303,
+    "ratio_to_median": 1.0093132981593425,
+    "label": "lower_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 5550,
+    "n_test": 2399
+   }
+  },
+  {
+   "benchmark": "BIDMC32HR",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "summary_lightgbm",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 20.87457263499169,
+   "values": [
+    20.87457263499169
+   ],
+   "n_runs": 1,
+   "elapsed_s": 17.61155891418457,
+   "position": {
+    "rank": 14,
+    "n_published": 13,
+    "published_best": 9.43,
+    "published_median": 13.98,
+    "published_worst": 15.29,
+    "ratio_to_best": 2.2136344257679417,
+    "ratio_to_median": 1.4931740082254428,
+    "label": "worse_than_all"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 5550,
+    "n_test": 2399
+   }
+  },
+  {
+   "benchmark": "BIDMC32RR",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "dummy",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 3.496752616965087,
+   "values": [
+    3.496752616965087
+   ],
+   "n_runs": 1,
+   "elapsed_s": 9.013290166854858,
+   "position": {
+    "rank": 6,
+    "n_published": 13,
+    "published_best": 3.02,
+    "published_median": 3.58,
+    "published_worst": 4.39,
+    "ratio_to_best": 1.1578651049553268,
+    "ratio_to_median": 0.9767465410517002,
+    "label": "upper_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 5471,
+    "n_test": 2399
+   }
+  },
+  {
+   "benchmark": "BIDMC32RR",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "minirocket",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 3.5489095972011717,
+   "values": [
+    3.5489095972011717
+   ],
+   "n_runs": 1,
+   "elapsed_s": 475.81268429756165,
+   "position": {
+    "rank": 7,
+    "n_published": 13,
+    "published_best": 3.02,
+    "published_median": 3.58,
+    "published_worst": 4.39,
+    "ratio_to_best": 1.1751356282123084,
+    "ratio_to_median": 0.9913155299444614,
+    "label": "upper_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 5471,
+    "n_test": 2399
+   }
+  },
+  {
+   "benchmark": "BIDMC32RR",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "summary_lightgbm",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 4.8359937166274225,
+   "values": [
+    4.8359937166274225
+   ],
+   "n_runs": 1,
+   "elapsed_s": 95.22153210639954,
+   "position": {
+    "rank": 14,
+    "n_published": 13,
+    "published_best": 3.02,
+    "published_median": 3.58,
+    "published_worst": 4.39,
+    "ratio_to_best": 1.6013224227243121,
+    "ratio_to_median": 1.3508362336948108,
+    "label": "worse_than_all"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 5471,
+    "n_test": 2399
+   }
+  },
+  {
+   "benchmark": "BIDMC32SpO2",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "summary_lightgbm",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 4.776462253661031,
+   "values": [
+    4.776462253661031
+   ],
+   "n_runs": 1,
+   "elapsed_s": 45.11340260505676,
+   "position": {
+    "rank": 3,
+    "n_published": 13,
+    "published_best": 4.45,
+    "published_median": 5.22,
+    "published_worst": 5.99,
+    "ratio_to_best": 1.07336230419349,
+    "ratio_to_median": 0.915031083076826,
+    "label": "near_best"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 5550,
+    "n_test": 2399
+   }
+  },
+  {
+   "benchmark": "BIDMC32SpO2",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "dummy",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 4.802912271323283,
+   "values": [
+    4.802912271323283
+   ],
+   "n_runs": 1,
+   "elapsed_s": 6.5176379680633545,
+   "position": {
+    "rank": 3,
+    "n_published": 13,
+    "published_best": 4.45,
+    "published_median": 5.22,
+    "published_worst": 5.99,
+    "ratio_to_best": 1.0793061283872545,
+    "ratio_to_median": 0.9200981362688282,
+    "label": "near_best"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 5550,
+    "n_test": 2399
+   }
+  },
+  {
+   "benchmark": "BIDMC32SpO2",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "minirocket",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 5.727447137541171,
+   "values": [
+    5.727447137541171
+   ],
+   "n_runs": 1,
+   "elapsed_s": 494.66295862197876,
+   "position": {
+    "rank": 12,
+    "n_published": 13,
+    "published_best": 4.45,
+    "published_median": 5.22,
+    "published_worst": 5.99,
+    "ratio_to_best": 1.287066772481162,
+    "ratio_to_median": 1.0972120953144007,
+    "label": "lower_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 5550,
+    "n_test": 2399
+   }
+  },
+  {
+   "benchmark": "BeijingPM10Quality",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "summary_lightgbm",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 96.44515289277396,
+   "values": [
+    96.44515289277396
+   ],
+   "n_runs": 1,
+   "elapsed_s": 129.8810429573059,
+   "position": {
+    "rank": 5,
+    "n_published": 13,
+    "published_best": 93.14,
+    "published_median": 99.73,
+    "published_worst": 139.23,
+    "ratio_to_best": 1.0354858588444702,
+    "ratio_to_median": 0.9670625979421835,
+    "label": "near_best"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "ffill",
+    "n_train": 11918,
+    "n_test": 5048
+   }
+  },
+  {
+   "benchmark": "BeijingPM10Quality",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "dummy",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 136.38538560444354,
+   "values": [
+    136.38538560444354
+   ],
+   "n_runs": 1,
+   "elapsed_s": 0.027354001998901367,
+   "position": {
+    "rank": 12,
+    "n_published": 13,
+    "published_best": 93.14,
+    "published_median": 99.73,
+    "published_worst": 139.23,
+    "ratio_to_best": 1.4643051922315176,
+    "ratio_to_median": 1.3675462308677784,
+    "label": "lower_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "ffill",
+    "n_train": 11918,
+    "n_test": 5048
+   }
+  },
+  {
+   "benchmark": "BeijingPM25Quality",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "summary_lightgbm",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 63.96695196842874,
+   "values": [
+    63.96695196842874
+   ],
+   "n_runs": 1,
+   "elapsed_s": 126.02902388572693,
+   "position": {
+    "rank": 6,
+    "n_published": 13,
+    "published_best": 59.5,
+    "published_median": 69.37,
+    "published_worst": 88.26,
+    "ratio_to_best": 1.0750748229988023,
+    "ratio_to_median": 0.9221126130665811,
+    "label": "near_best"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "ffill",
+    "n_train": 11918,
+    "n_test": 5048
+   }
+  },
+  {
+   "benchmark": "BeijingPM25Quality",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "dummy",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 112.90728499025016,
+   "values": [
+    112.90728499025016
+   ],
+   "n_runs": 1,
+   "elapsed_s": 0.024726152420043945,
+   "position": {
+    "rank": 14,
+    "n_published": 13,
+    "published_best": 59.5,
+    "published_median": 69.37,
+    "published_worst": 88.26,
+    "ratio_to_best": 1.8976014284075657,
+    "ratio_to_median": 1.627609701459567,
+    "label": "worse_than_all"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "ffill",
+    "n_train": 11918,
+    "n_test": 5048
+   }
+  },
+  {
+   "benchmark": "BenzeneConcentration",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "dummy",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 8.015239993009088,
+   "values": [
+    8.015239993009088
+   ],
+   "n_runs": 1,
+   "elapsed_s": 0.18175745010375977,
+   "position": {
+    "rank": 12,
+    "n_published": 13,
+    "published_best": 0.64,
+    "published_median": 4.87,
+    "published_worst": 11.1,
+    "ratio_to_best": 12.523812489076699,
+    "ratio_to_median": 1.645839834293447,
+    "label": "lower_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "ffill",
+    "n_train": 3349,
+    "n_test": 5163
+   }
+  },
+  {
+   "benchmark": "BenzeneConcentration",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "summary_lightgbm",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 8.912513480175438,
+   "values": [
+    8.912513480175438
+   ],
+   "n_runs": 1,
+   "elapsed_s": 74.54768681526184,
+   "position": {
+    "rank": 12,
+    "n_published": 13,
+    "published_best": 0.64,
+    "published_median": 4.87,
+    "published_worst": 11.1,
+    "ratio_to_best": 13.92580231277412,
+    "ratio_to_median": 1.8300849035267839,
+    "label": "lower_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "ffill",
+    "n_train": 3349,
+    "n_test": 5163
+   }
+  },
+  {
+   "benchmark": "Covid3Month",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "rocket",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 0.03877987431311006,
+   "values": [
+    0.03877987431311006
+   ],
+   "n_runs": 1,
+   "elapsed_s": 4.0189690589904785,
+   "position": {
+    "rank": 1,
+    "n_published": 13,
+    "published_best": 0.04,
+    "published_median": 0.05,
+    "published_worst": 0.1,
+    "ratio_to_best": 0.9694968578277514,
+    "ratio_to_median": 0.7755974862622012,
+    "label": "best_or_better"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 140,
+    "n_test": 61
+   }
+  },
+  {
+   "benchmark": "Covid3Month",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "minirocket",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 0.04082456114213863,
+   "values": [
+    0.04082456114213863
+   ],
+   "n_runs": 1,
+   "elapsed_s": 8.886544942855835,
+   "position": {
+    "rank": 1,
+    "n_published": 13,
+    "published_best": 0.04,
+    "published_median": 0.05,
+    "published_worst": 0.1,
+    "ratio_to_best": 1.0206140285534657,
+    "ratio_to_median": 0.8164912228427725,
+    "label": "best_or_better"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 140,
+    "n_test": 61
+   }
+  },
+  {
+   "benchmark": "Covid3Month",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "drcif",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 0.043754180959056255,
+   "values": [
+    0.043754180959056255
+   ],
+   "n_runs": 1,
+   "elapsed_s": 199.6396222114563,
+   "position": {
+    "rank": 1,
+    "n_published": 13,
+    "published_best": 0.04,
+    "published_median": 0.05,
+    "published_worst": 0.1,
+    "ratio_to_best": 1.0938545239764064,
+    "ratio_to_median": 0.8750836191811251,
+    "label": "best_or_better"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 140,
+    "n_test": 61
+   }
+  },
+  {
+   "benchmark": "Covid3Month",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "dummy",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 0.04471992368682529,
+   "values": [
+    0.04471992368682529
+   ],
+   "n_runs": 1,
+   "elapsed_s": 0.004133701324462891,
+   "position": {
+    "rank": 1,
+    "n_published": 13,
+    "published_best": 0.04,
+    "published_median": 0.05,
+    "published_worst": 0.1,
+    "ratio_to_best": 1.1179980921706323,
+    "ratio_to_median": 0.8943984737365058,
+    "label": "best_or_better"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 140,
+    "n_test": 61
+   }
+  },
+  {
+   "benchmark": "Covid3Month",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "summary_lightgbm",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 0.04538471994110309,
+   "values": [
+    0.04538471994110309
+   ],
+   "n_runs": 1,
+   "elapsed_s": 1.3093996047973633,
+   "position": {
+    "rank": 5,
+    "n_published": 13,
+    "published_best": 0.04,
+    "published_median": 0.05,
+    "published_worst": 0.1,
+    "ratio_to_best": 1.1346179985275773,
+    "ratio_to_median": 0.9076943988220617,
+    "label": "upper_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 140,
+    "n_test": 61
+   }
+  },
+  {
+   "benchmark": "FloodModeling1",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "drcif",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 0.006052869481526588,
+   "values": [
+    0.006052869481526588
+   ],
+   "n_runs": 1,
+   "elapsed_s": 319.0344898700714,
+   "position": {
+    "rank": 2,
+    "n_published": 13,
+    "published_best": 0.0,
+    "published_median": 0.02,
+    "published_worst": 0.05,
+    "ratio_to_best": null,
+    "ratio_to_median": 0.3026434740763294,
+    "label": "upper_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 471,
+    "n_test": 202
+   }
+  },
+  {
+   "benchmark": "FloodModeling1",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "minirocket",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 0.00613685866959148,
+   "values": [
+    0.00613685866959148
+   ],
+   "n_runs": 1,
+   "elapsed_s": 10.409790277481079,
+   "position": {
+    "rank": 2,
+    "n_published": 13,
+    "published_best": 0.0,
+    "published_median": 0.02,
+    "published_worst": 0.05,
+    "ratio_to_best": null,
+    "ratio_to_median": 0.306842933479574,
+    "label": "upper_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 471,
+    "n_test": 202
+   }
+  },
+  {
+   "benchmark": "FloodModeling1",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "summary_lightgbm",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 0.008629393045106671,
+   "values": [
+    0.008629393045106671
+   ],
+   "n_runs": 1,
+   "elapsed_s": 1.8151516914367676,
+   "position": {
+    "rank": 2,
+    "n_published": 13,
+    "published_best": 0.0,
+    "published_median": 0.02,
+    "published_worst": 0.05,
+    "ratio_to_best": null,
+    "ratio_to_median": 0.4314696522553335,
+    "label": "upper_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 471,
+    "n_test": 202
+   }
+  },
+  {
+   "benchmark": "FloodModeling1",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "rocket",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 0.014168886727943376,
+   "values": [
+    0.014168886727943376
+   ],
+   "n_runs": 1,
+   "elapsed_s": 34.794405937194824,
+   "position": {
+    "rank": 2,
+    "n_published": 13,
+    "published_best": 0.0,
+    "published_median": 0.02,
+    "published_worst": 0.05,
+    "ratio_to_best": null,
+    "ratio_to_median": 0.7084443363971688,
+    "label": "upper_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 471,
+    "n_test": 202
+   }
+  },
+  {
+   "benchmark": "FloodModeling1",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "dummy",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 0.018863328807814914,
+   "values": [
+    0.018863328807814914
+   ],
+   "n_runs": 1,
+   "elapsed_s": 0.005102634429931641,
+   "position": {
+    "rank": 6,
+    "n_published": 13,
+    "published_best": 0.0,
+    "published_median": 0.02,
+    "published_worst": 0.05,
+    "ratio_to_best": null,
+    "ratio_to_median": 0.9431664403907457,
+    "label": "upper_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 471,
+    "n_test": 202
+   }
+  },
+  {
+   "benchmark": "FloodModeling3",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "minirocket",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 0.00631953121699881,
+   "values": [
+    0.00631953121699881
+   ],
+   "n_runs": 1,
+   "elapsed_s": 10.267940998077393,
+   "position": {
+    "rank": 2,
+    "n_published": 13,
+    "published_best": 0.0,
+    "published_median": 0.02,
+    "published_worst": 0.04,
+    "ratio_to_best": null,
+    "ratio_to_median": 0.3159765608499405,
+    "label": "upper_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 429,
+    "n_test": 184
+   }
+  },
+  {
+   "benchmark": "FloodModeling3",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "drcif",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 0.008401962358127488,
+   "values": [
+    0.008401962358127488
+   ],
+   "n_runs": 1,
+   "elapsed_s": 310.61911702156067,
+   "position": {
+    "rank": 2,
+    "n_published": 13,
+    "published_best": 0.0,
+    "published_median": 0.02,
+    "published_worst": 0.04,
+    "ratio_to_best": null,
+    "ratio_to_median": 0.4200981179063744,
+    "label": "upper_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 429,
+    "n_test": 184
+   }
+  },
+  {
+   "benchmark": "FloodModeling3",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "summary_lightgbm",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 0.0096502700967478,
+   "values": [
+    0.0096502700967478
+   ],
+   "n_runs": 1,
+   "elapsed_s": 2.1091394424438477,
+   "position": {
+    "rank": 2,
+    "n_published": 13,
+    "published_best": 0.0,
+    "published_median": 0.02,
+    "published_worst": 0.04,
+    "ratio_to_best": null,
+    "ratio_to_median": 0.48251350483739,
+    "label": "upper_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 429,
+    "n_test": 184
+   }
+  },
+  {
+   "benchmark": "FloodModeling3",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "rocket",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 0.019374486021350112,
+   "values": [
+    0.019374486021350112
+   ],
+   "n_runs": 1,
+   "elapsed_s": 31.753638744354248,
+   "position": {
+    "rank": 6,
+    "n_published": 13,
+    "published_best": 0.0,
+    "published_median": 0.02,
+    "published_worst": 0.04,
+    "ratio_to_best": null,
+    "ratio_to_median": 0.9687243010675056,
+    "label": "upper_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 429,
+    "n_test": 184
+   }
+  },
+  {
+   "benchmark": "FloodModeling3",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "dummy",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 0.022793727321046602,
+   "values": [
+    0.022793727321046602
+   ],
+   "n_runs": 1,
+   "elapsed_s": 0.005239725112915039,
+   "position": {
+    "rank": 6,
+    "n_published": 13,
+    "published_best": 0.0,
+    "published_median": 0.02,
+    "published_worst": 0.04,
+    "ratio_to_best": null,
+    "ratio_to_median": 1.13968636605233,
+    "label": "upper_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 429,
+    "n_test": 184
+   }
+  },
+  {
+   "benchmark": "HouseholdPowerConsumption1",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "summary_lightgbm",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 60.63783892091922,
+   "values": [
+    60.63783892091922
+   ],
+   "n_runs": 1,
+   "elapsed_s": 13.978197574615479,
+   "position": {
+    "rank": 1,
+    "n_published": 13,
+    "published_best": 132.8,
+    "published_median": 193.21,
+    "published_worst": 473.93,
+    "ratio_to_best": 0.45661023283824714,
+    "ratio_to_median": 0.31384420537715035,
+    "label": "best_or_better"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "ffill",
+    "n_train": 745,
+    "n_test": 686
+   }
+  },
+  {
+   "benchmark": "HouseholdPowerConsumption1",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "dummy",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 521.1154897160502,
+   "values": [
+    521.1154897160502
+   ],
+   "n_runs": 1,
+   "elapsed_s": 0.12144637107849121,
+   "position": {
+    "rank": 14,
+    "n_published": 13,
+    "published_best": 132.8,
+    "published_median": 193.21,
+    "published_worst": 473.93,
+    "ratio_to_best": 3.9240624225606187,
+    "ratio_to_median": 2.6971455396514163,
+    "label": "worse_than_all"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "ffill",
+    "n_train": 745,
+    "n_test": 686
+   }
+  },
+  {
+   "benchmark": "HouseholdPowerConsumption2",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "summary_lightgbm",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 40.99786786370681,
+   "values": [
+    40.99786786370681
+   ],
+   "n_runs": 1,
+   "elapsed_s": 13.441031455993652,
+   "position": {
+    "rank": 4,
+    "n_published": 13,
+    "published_best": 32.61,
+    "published_median": 46.93,
+    "published_worst": 71.48,
+    "ratio_to_best": 1.2572176591139776,
+    "ratio_to_median": 0.8735961615961391,
+    "label": "upper_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "ffill",
+    "n_train": 745,
+    "n_test": 686
+   }
+  },
+  {
+   "benchmark": "HouseholdPowerConsumption2",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "dummy",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 55.72433487140046,
+   "values": [
+    55.72433487140046
+   ],
+   "n_runs": 1,
+   "elapsed_s": 0.1268775463104248,
+   "position": {
+    "rank": 10,
+    "n_published": 13,
+    "published_best": 32.61,
+    "published_median": 46.93,
+    "published_worst": 71.48,
+    "ratio_to_best": 1.7088112502729365,
+    "ratio_to_median": 1.1873926032687079,
+    "label": "lower_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "ffill",
+    "n_train": 745,
+    "n_test": 686
+   }
+  },
+  {
+   "benchmark": "IEEEPPG",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "rocket",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 28.09633927767444,
+   "values": [
+    28.09633927767444
+   ],
+   "n_runs": 1,
+   "elapsed_s": 2194.8843760490417,
+   "position": {
+    "rank": 3,
+    "n_published": 13,
+    "published_best": 23.9,
+    "published_median": 33.15,
+    "published_worst": 37.25,
+    "ratio_to_best": 1.1755790492750813,
+    "ratio_to_median": 0.8475517127503601,
+    "label": "upper_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 1768,
+    "n_test": 1328
+   }
+  },
+  {
+   "benchmark": "IEEEPPG",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "summary_lightgbm",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 34.45812165994426,
+   "values": [
+    34.45812165994426
+   ],
+   "n_runs": 1,
+   "elapsed_s": 8.613215684890747,
+   "position": {
+    "rank": 11,
+    "n_published": 13,
+    "published_best": 23.9,
+    "published_median": 33.15,
+    "published_worst": 37.25,
+    "ratio_to_best": 1.4417624125499693,
+    "ratio_to_median": 1.0394606835578963,
+    "label": "lower_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 1768,
+    "n_test": 1328
+   }
+  },
+  {
+   "benchmark": "IEEEPPG",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "dummy",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 37.264093786871214,
+   "values": [
+    37.264093786871214
+   ],
+   "n_runs": 1,
+   "elapsed_s": 0.1853194236755371,
+   "position": {
+    "rank": 14,
+    "n_published": 13,
+    "published_best": 23.9,
+    "published_median": 33.15,
+    "published_worst": 37.25,
+    "ratio_to_best": 1.559167104053189,
+    "ratio_to_median": 1.1241053932691165,
+    "label": "worse_than_all"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 1768,
+    "n_test": 1328
+   }
+  },
+  {
+   "benchmark": "IEEEPPG",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "minirocket",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 47.42682252282171,
+   "values": [
+    47.42682252282171
+   ],
+   "n_runs": 1,
+   "elapsed_s": 72.93421816825867,
+   "position": {
+    "rank": 14,
+    "n_published": 13,
+    "published_best": 23.9,
+    "published_median": 33.15,
+    "published_worst": 37.25,
+    "ratio_to_best": 1.9843858796159712,
+    "ratio_to_median": 1.4306733792706399,
+    "label": "worse_than_all"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 1768,
+    "n_test": 1328
+   }
+  },
+  {
+   "benchmark": "LiveFuelMoistureContent",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "dummy",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 41.13463866445672,
+   "values": [
+    41.13463866445672
+   ],
+   "n_runs": 1,
+   "elapsed_s": 0.1102135181427002,
+   "position": {
+    "rank": 13,
+    "n_published": 13,
+    "published_best": 28.8,
+    "published_median": 35.19,
+    "published_worst": 47.84,
+    "ratio_to_best": 1.4282860647380806,
+    "ratio_to_median": 1.1689297716526492,
+    "label": "lower_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 3493,
+    "n_test": 1510
+   }
+  },
+  {
+   "benchmark": "LiveFuelMoistureContent",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "minirocket",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 46.41816241724421,
+   "values": [
+    46.41816241724421
+   ],
+   "n_runs": 1,
+   "elapsed_s": 83.33134698867798,
+   "position": {
+    "rank": 13,
+    "n_published": 13,
+    "published_best": 28.8,
+    "published_median": 35.19,
+    "published_worst": 47.84,
+    "ratio_to_best": 1.6117417505987572,
+    "ratio_to_median": 1.319072532459341,
+    "label": "lower_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 3493,
+    "n_test": 1510
+   }
+  },
+  {
+   "benchmark": "LiveFuelMoistureContent",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "summary_lightgbm",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 47.34113248040075,
+   "values": [
+    47.34113248040075
+   ],
+   "n_runs": 1,
+   "elapsed_s": 6.9621570110321045,
+   "position": {
+    "rank": 13,
+    "n_published": 13,
+    "published_best": 28.8,
+    "published_median": 35.19,
+    "published_worst": 47.84,
+    "ratio_to_best": 1.6437893222361373,
+    "ratio_to_median": 1.3453007240807262,
+    "label": "lower_half"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 3493,
+    "n_test": 1510
+   }
+  },
+  {
+   "benchmark": "LiveFuelMoistureContent",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "rocket",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 48.21773516353152,
+   "values": [
+    48.21773516353152
+   ],
+   "n_runs": 1,
+   "elapsed_s": 1291.2421789169312,
+   "position": {
+    "rank": 14,
+    "n_published": 13,
+    "published_best": 28.8,
+    "published_median": 35.19,
+    "published_worst": 47.84,
+    "ratio_to_best": 1.6742269154004,
+    "ratio_to_median": 1.370211286261197,
+    "label": "worse_than_all"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 3493,
+    "n_test": 1510
+   }
+  },
+  {
+   "benchmark": "NewsHeadlineSentiment",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "dummy",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 0.14224847184310654,
+   "values": [
+    0.14224847184310654
+   ],
+   "n_runs": 1,
+   "elapsed_s": 0.2899637222290039,
+   "position": {
+    "rank": 1,
+    "n_published": 13,
+    "published_best": 0.14,
+    "published_median": 0.15,
+    "published_worst": 0.2,
+    "ratio_to_best": 1.0160605131650466,
+    "ratio_to_median": 0.9483231456207103,
+    "label": "best_or_better"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 58213,
+    "n_test": 24951
+   }
+  },
+  {
+   "benchmark": "NewsHeadlineSentiment",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "summary_lightgbm",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 0.14321496131895228,
+   "values": [
+    0.14321496131895228
+   ],
+   "n_runs": 1,
+   "elapsed_s": 18.180731296539307,
+   "position": {
+    "rank": 1,
+    "n_published": 13,
+    "published_best": 0.14,
+    "published_median": 0.15,
+    "published_worst": 0.2,
+    "ratio_to_best": 1.0229640094210877,
+    "ratio_to_median": 0.9547664087930152,
+    "label": "best_or_better"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 58213,
+    "n_test": 24951
+   }
+  },
+  {
+   "benchmark": "NewsHeadlineSentiment",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "minirocket",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 0.14346724494861327,
+   "values": [
+    0.14346724494861327
+   ],
+   "n_runs": 1,
+   "elapsed_s": 8460.627695322037,
+   "position": {
+    "rank": 1,
+    "n_published": 13,
+    "published_best": 0.14,
+    "published_median": 0.15,
+    "published_worst": 0.2,
+    "ratio_to_best": 1.0247660353472374,
+    "ratio_to_median": 0.9564482996574218,
+    "label": "best_or_better"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 58213,
+    "n_test": 24951
+   }
+  },
+  {
+   "benchmark": "NewsTitleSentiment",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "dummy",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 0.13810528374268313,
+   "values": [
+    0.13810528374268313
+   ],
+   "n_runs": 1,
+   "elapsed_s": 0.24542522430419922,
+   "position": {
+    "rank": 1,
+    "n_published": 13,
+    "published_best": 0.14,
+    "published_median": 0.14,
+    "published_worst": 0.19,
+    "ratio_to_best": 0.9864663124477365,
+    "ratio_to_median": 0.9864663124477365,
+    "label": "best_or_better"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 58213,
+    "n_test": 24951
+   }
+  },
+  {
+   "benchmark": "NewsTitleSentiment",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "minirocket",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 0.13914056436639372,
+   "values": [
+    0.13914056436639372
+   ],
+   "n_runs": 1,
+   "elapsed_s": 7953.956946134567,
+   "position": {
+    "rank": 1,
+    "n_published": 13,
+    "published_best": 0.14,
+    "published_median": 0.14,
+    "published_worst": 0.19,
+    "ratio_to_best": 0.9938611740456693,
+    "ratio_to_median": 0.9938611740456693,
+    "label": "best_or_better"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 58213,
+    "n_test": 24951
+   }
+  },
+  {
+   "benchmark": "NewsTitleSentiment",
+   "metric": "rmse",
+   "unit": "target",
+   "model": "summary_lightgbm",
+   "condition": "official_split",
+   "config": "shipped",
+   "value": 0.13924784867156265,
+   "values": [
+    0.13924784867156265
+   ],
+   "n_runs": 1,
+   "elapsed_s": 12.697897672653198,
+   "position": {
+    "rank": 1,
+    "n_published": 13,
+    "published_best": 0.14,
+    "published_median": 0.14,
+    "published_worst": 0.19,
+    "ratio_to_best": 0.9946274905111616,
+    "ratio_to_median": 0.9946274905111616,
+    "label": "best_or_better"
+   },
+   "extra": {
+    "seeds": [
+     1
+    ],
+    "impute": "none",
+    "n_train": 58213,
+    "n_test": 24951
+   }
+  }
+ ]
+}
